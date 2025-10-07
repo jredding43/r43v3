@@ -1,0 +1,8 @@
+{
+  "name": "R43 Digital Tech",
+  "short_name": "R43",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0f12",
+  "theme_color": "#0a0f12"
+}
