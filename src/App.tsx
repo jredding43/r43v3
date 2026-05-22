@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Header from "./components/Header";
 import SubHeader from "./components/Subheader";
 import Footer from "./components/Footer";
-import logo from "./assets/logo.png";
+import logo from "./assets/newlogo.png";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
 import Projects from "./pages/Projects";
