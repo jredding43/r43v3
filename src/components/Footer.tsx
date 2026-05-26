@@ -1,84 +1,207 @@
 import React from "react";
-import { FaFacebookF} from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { FaFacebookF } from "react-icons/fa";
 
 const Footer: React.FC = () => {
+  const handleTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
-    <footer className="bg-[#0a0f12] border-t border-slate-800/70 text-slate-300 font-['Roboto']">
-      {/* Top Section */}
-      <div className="max-w-7xl mx-auto px-6 py-10 grid grid-cols-1 md:grid-cols-3 gap-10">
-        {/* Brand / About */}
-        <div>
-          <h2 className="text-2xl font-bold bg-gradient-to-r from-teal-400 to-teal-600 bg-clip-text text-transparent mb-3">
-            R43 Digital Tech
-          </h2>
-          <p className="text-sm text-slate-400 leading-relaxed">
-            Delivering software and ad solutions for local businesses across
-            Stevens County and beyond. Precision, practicality, and reliability
-            — built into everything we do.
-          </p>
-        </div>
+    <footer className="border-t border-slate-800/70 bg-[#0a0f12] font-['Roboto'] text-slate-300">
+      {/* ===== Main Footer ===== */}
+      <div className="mx-auto max-w-7xl px-6 py-12">
+        <div className="grid gap-10 md:grid-cols-4">
+          {/* ===== Brand ===== */}
+          <div className="md:col-span-1">
+            <h2 className="bg-gradient-to-r from-teal-400 to-cyan-400 bg-clip-text text-2xl font-bold text-transparent">
+              R43 Digital Tech
+            </h2>
 
-        {/* Quick Links */}
-        <div>
-          <h3 className="text-lg font-semibold text-teal-300 mb-3 uppercase tracking-wide">
-            Quick Links
-          </h3>
-          <ul className="space-y-2 text-sm">
-            <li>
-              <a href="/" className="hover:text-teal-400 transition-colors">
-                Home
-              </a>
-            </li>
-            <li>
-              <a href="/services" className="hover:text-teal-400 transition-colors">
-                Services
-              </a>
-            </li>
-            <li>
-              <a href="/projects" className="hover:text-teal-400 transition-colors">
-                Projects
-              </a>
-            </li>
-            <li>
-              <a href="/about" className="hover:text-teal-400 transition-colors">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="/contact" className="hover:text-teal-400 transition-colors">
-                Contact
-              </a>
-            </li>
-          </ul>
-        </div>
+            <p className="mt-4 text-sm leading-relaxed text-slate-400">
+              A technology company focused on professional websites, operational
+              software, dashboards, workflows, and practical business systems.
+            </p>
 
-        {/* Contact / Social */}
-        <div>
-          <h3 className="text-lg font-semibold text-teal-300 mb-3 uppercase tracking-wide">
-            Connect
-          </h3>
-          <ul className="space-y-3 text-sm">
-
-            <li className="flex items-center gap-4 mt-2">
+            <div className="mt-5 flex items-center gap-3">
               <a
                 href="https://www.facebook.com/profile.php?id=61574246566116"
-                className="hover:text-teal-400 transition-colors"
+                target="_blank"
+                rel="noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-md border border-slate-700 bg-[#0f1416] text-slate-300 transition hover:border-teal-500/60 hover:text-teal-300"
                 aria-label="Facebook"
               >
-                <FaFacebookF size={16} />
+                <FaFacebookF size={14} />
               </a>
-      
-            </li>
-          </ul>
+            </div>
+          </div>
+
+          {/* ===== Company ===== */}
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-teal-300">
+              Company
+            </h3>
+
+            <ul className="mt-4 space-y-3 text-sm">
+              <li>
+                <Link
+                  to="/"
+                  onClick={handleTop}
+                  className="text-slate-400 transition hover:text-teal-300"
+                >
+                  Home
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/projects"
+                  onClick={handleTop}
+                  className="text-slate-400 transition hover:text-teal-300"
+                >
+                  Projects
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/about"
+                  onClick={handleTop}
+                  className="text-slate-400 transition hover:text-teal-300"
+                >
+                  About
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/contact"
+                  onClick={handleTop}
+                  className="text-slate-400 transition hover:text-teal-300"
+                >
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* ===== R43 Creative ===== */}
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-teal-300">
+              R43 Creative
+            </h3>
+
+            <ul className="mt-4 space-y-3 text-sm">
+              <li>
+                <Link
+                  to="/creative"
+                  onClick={handleTop}
+                  className="text-slate-400 transition hover:text-teal-300"
+                >
+                  Websites
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/creative"
+                  onClick={handleTop}
+                  className="text-slate-400 transition hover:text-teal-300"
+                >
+                  Hosting & Launch
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/creative"
+                  onClick={handleTop}
+                  className="text-slate-400 transition hover:text-teal-300"
+                >
+                  Contact Forms
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/creative"
+                  onClick={handleTop}
+                  className="text-slate-400 transition hover:text-teal-300"
+                >
+                  Website Support
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* ===== R43 Ops ===== */}
+          <div>
+            <h3 className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300">
+              R43 Ops
+            </h3>
+
+            <ul className="mt-4 space-y-3 text-sm">
+              <li>
+                <Link
+                  to="/ops"
+                  onClick={handleTop}
+                  className="text-slate-400 transition hover:text-cyan-300"
+                >
+                  Dashboards
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/ops"
+                  onClick={handleTop}
+                  className="text-slate-400 transition hover:text-cyan-300"
+                >
+                  Workflow Systems
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/ops"
+                  onClick={handleTop}
+                  className="text-slate-400 transition hover:text-cyan-300"
+                >
+                  Operational Software
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/ops"
+                  onClick={handleTop}
+                  className="text-slate-400 transition hover:text-cyan-300"
+                >
+                  Internal Tools
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
 
-      {/* Divider Line */}
+      {/* ===== Accent Line ===== */}
       <div className="h-[2px] w-full bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-400" />
 
-      {/* Bottom Section */}
-      <div className="text-center text-xs md:text-sm text-slate-500 py-4">
-        © {new Date().getFullYear()} R43 Digital Tech. All rights reserved.
+      {/* ===== Bottom Footer ===== */}
+      <div className="mx-auto max-w-7xl px-6 py-5">
+        <div className="flex flex-col items-center justify-between gap-3 text-xs text-slate-500 md:flex-row">
+          <div>
+            © {new Date().getFullYear()} R43 Digital Tech LLC. All rights reserved.
+          </div>
+
+          <div className="flex items-center gap-4">
+            <span>Websites • Software • Operational Systems</span>
+          </div>
+        </div>
       </div>
     </footer>
   );

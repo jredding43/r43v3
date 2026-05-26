@@ -5,181 +5,188 @@ import type { FAQItem } from "../components/FAQS";
 import CTA from "../components/CTA";
 
 const Home: React.FC = () => {
-  // Easy-to-edit FAQ entries
   const faqs: FAQItem[] = [
     {
+      q: "What is R43 Digital Tech?",
+      a: "R43 Digital Tech LLC is the parent technology company behind R43 Creative and R43 Ops. R43 Creative focuses on websites and business presence. R43 Ops focuses on custom software, workflow systems, and operational tools.",
+    },
+    {
+      q: "What is the difference between R43 Creative and R43 Ops?",
+      a: "R43 Creative is for websites, hosting, branding, and small business digital setup. R43 Ops is for custom software, dashboards, workflow systems, internal tools, and heavier business or operational tracking.",
+    },
+    {
       q: "Do you build and host websites?",
-      a: "Yes. I design and deploy modern sites, provide fast/reliable hosting, domain/DNS setup, SSL, and ongoing upkeep.",
+      a: "Yes. Through R43 Creative, I design and deploy modern websites with hosting setup, domain/DNS configuration, SSL, contact forms, and ongoing maintenance.",
     },
     {
-      q: "Can you help set up my business tech stack?",
-      a: "Absolutely—email, domains, devices, POS, task tools, and basic automations. I’ll document everything so it’s easy to maintain.",
+      q: "Can you build custom business software?",
+      a: "Yes. Through R43 Ops, I build practical web-based software such as dashboards, task systems, document access tools, operational tracking, and custom line-of-business applications.",
+    },
+  ];
+
+  const divisions = [
+    {
+      name: "R43 Creative",
+      label: "Websites & Business Presence",
+      description:
+        "Professional websites, hosting setup, contact forms, business pages, branding support, and digital tools for small businesses that need to look credible online.",
+      href: "/creative",
+      cta: "Explore Creative",
+      bullets: ["Websites", "Hosting setup", "Contact forms", "Business branding"],
     },
     {
-      q: "What software do you provide?",
-      a: "Point-of-Sale, Task Manager, and LocalDocs (on-prem document access). I also build custom line-of-business apps.",
-    },
-    {
-      q: "Why Blazor for heavier tracking?",
-      a: "Blazor lets me ship secure, fast, .NET-backed apps with role-based access, solid data models, and great performance at scale.",
+      name: "R43 Ops",
+      label: "Software & Operational Systems",
+      description:
+        "Custom software, dashboards, internal tools, workflow systems, document access, reporting, and practical applications for businesses that need more than a basic website.",
+      href: "/ops",
+      cta: "Explore Ops",
+      bullets: ["Custom apps", "Dashboards", "Workflow systems", "Operational tracking"],
     },
   ];
 
   return (
     <>
       <Helmet>
-        <title>R43 Digital Tech — Websites, Hosting & Business Software</title>
+        <title>R43 Digital Tech — Websites, Software & Business Systems</title>
         <meta
           name="description"
-          content="Websites and hosting, business setup, POS, task management, LocalDocs, and custom Blazor applications for heavier tracking in Stevens County and surrounding areas."
+          content="R43 Digital Tech LLC provides professional websites through R43 Creative and custom business software through R43 Ops for Stevens County and surrounding areas."
         />
       </Helmet>
 
       <main className="font-['Roboto'] text-slate-200">
-        {/* ===== Hero (industrial, confident) ===== */}
+        {/* ===== Hero ===== */}
         <section id="home" className="bg-[#0a0f12] border-b border-slate-800/60">
-          <div className="mx-auto max-w-7xl px-6 py-14 md:py-20">
-            <div className="grid items-center gap-10 md:grid-cols-[1.25fr_1fr]">
-              {/* Left: headline + CTA */}
+          <div className="mx-auto max-w-7xl px-6 py-16 md:py-24">
+            <div className="grid items-center gap-12 lg:grid-cols-[1.2fr_0.8fr]">
               <div>
                 <div className="inline-flex items-center gap-2 rounded-full border border-teal-700/30 bg-[#0f171a] px-3 py-1 text-[11px] tracking-wider uppercase text-teal-300/90">
-                  Industrial • Reliable • Documented
+                  R43 Digital Tech LLC
                 </div>
 
-                <h1 className="mt-4 text-3xl md:text-5xl font-bold tracking-[0.03em] text-teal-200">
-                  Websites, Hosting & Business Software
+                <h1 className="mt-5 text-4xl md:text-6xl font-bold tracking-tight text-teal-100">
+                  Websites, software, and systems built for real business operations.
                 </h1>
 
-                <p className="mt-4 text-slate-300/90 leading-relaxed md:text-lg">
-                  I help small businesses get online and stay operational—modern sites and hosting,
-                  straightforward setup, and practical software like POS, task management, and LocalDocs.
-                  For deeper needs, I build Blazor apps with heavier tracking.
+                <p className="mt-5 max-w-2xl text-slate-300/90 leading-relaxed md:text-lg">
+                  R43 Digital Tech is a technology company with two focused divisions:
+                  <span className="text-teal-200 font-medium"> R43 Creative</span> for websites and digital presence,
+                  and <span className="text-teal-200 font-medium">R43 Ops</span> for custom software, workflows,
+                  dashboards, and operational systems.
                 </p>
 
-                <div className="mt-7 flex flex-wrap items-center gap-3">
+                <div className="mt-8 flex flex-wrap items-center gap-3">
                   <a
-                    href="#contact"
-                    className="inline-flex items-center rounded-md bg-teal-600/90 px-4 py-2 text-sm font-medium text-white hover:bg-teal-500 transition"
+                    href="#divisions"
+                    className="inline-flex items-center rounded-md bg-teal-600/90 px-5 py-2.5 text-sm font-medium text-white hover:bg-teal-500 transition"
                   >
-                    Get a quote
+                    Choose a division
                   </a>
                   <a
-                    href="#services"
-                    className="inline-flex items-center rounded-md border border-slate-700 bg-[#0f1418] px-4 py-2 text-sm font-medium text-slate-200 hover:border-teal-600/50 transition"
+                    href="#contact"
+                    className="inline-flex items-center rounded-md border border-slate-700 bg-[#0f1418] px-5 py-2.5 text-sm font-medium text-slate-200 hover:border-teal-600/50 transition"
                   >
-                    See services
+                    Start a project
                   </a>
                 </div>
 
                 <div className="mt-6 text-xs text-slate-400">
-                  Serving Stevens County and surrounding areas
+                  Serving Stevens County, Northeast Washington, and surrounding areas
                 </div>
               </div>
 
-              {/* Right: spec panel (industrial card) */}
-              <div className="rounded-xl border border-slate-800 bg-[#0f1416]/95 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
+              <div className="rounded-2xl border border-slate-800 bg-[#0f1416]/95 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
                 <h3 className="text-sm font-semibold tracking-wide text-slate-300 uppercase">
-                  What you can expect
+                  One company. Two focused divisions.
                 </h3>
-                <ul className="mt-4 space-y-3 text-sm">
-                  {[
-                    {
-                      strong: "Clear setup & docs:",
-                      text: "domains, DNS, SSL, email, and vendor logins recorded neatly.",
-                    },
-                    {
-                      strong: "Reliable hosting:",
-                      text: "fast, secure, and monitored with backups.",
-                    },
-                    {
-                      strong: "Right-sized software:",
-                      text: "POS, task tools, LocalDocs, or custom Blazor when you need more.",
-                    },
-                  ].map((it) => (
-                    <li key={it.strong} className="flex items-start gap-3">
-                      <span className="mt-1 h-[6px] w-[6px] rounded-full bg-teal-400" />
-                      <span>
-                        <strong className="text-slate-200">{it.strong}</strong> {it.text}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
+
+                <div className="mt-5 space-y-4">
+                  <div className="rounded-xl border border-slate-800 bg-[#0b1013] p-4">
+                    <div className="text-teal-300 font-semibold">R43 Creative</div>
+                    <p className="mt-1 text-sm text-slate-400">
+                      Websites, hosting, branding, and business-facing digital presence.
+                    </p>
+                  </div>
+
+                  <div className="rounded-xl border border-slate-800 bg-[#0b1013] p-4">
+                    <div className="text-cyan-300 font-semibold">R43 Ops</div>
+                    <p className="mt-1 text-sm text-slate-400">
+                      Custom software, dashboards, workflows, and operational systems.
+                    </p>
+                  </div>
+                </div>
 
                 <div className="mt-5 h-px w-full bg-slate-800/60" />
 
                 <div className="mt-4 grid gap-2 text-[12px] text-slate-400">
                   <div className="flex items-center justify-between">
-                    <span>Stack</span>
-                    <span className="text-slate-300">Web • Hosting • POS • Blazor</span>
+                    <span>Approach</span>
+                    <span className="text-slate-300">Assess → Build → Support</span>
                   </div>
                   <div className="flex items-center justify-between">
-                    <span>Approach</span>
-                    <span className="text-slate-300">Assess → Implement → Support</span>
+                    <span>Focus</span>
+                    <span className="text-slate-300">Practical, documented, scalable</span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          {/* industrial accent */}
+
           <div className="h-[2px] w-full bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-400" />
         </section>
 
-        {/* ===== Services (industrial cards) ===== */}
-        <section id="services" className="bg-[#0c1114]">
+        {/* ===== Division Split ===== */}
+        <section id="divisions" className="bg-[#0c1114]">
           <div className="mx-auto max-w-7xl px-6 py-14 md:py-20">
-            <div className="flex items-end justify-between gap-4">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold text-teal-200">Core Services</h2>
-                <p className="mt-1 text-sm text-slate-400">
-                  Everything you need to launch and operate—without the fluff.
-                </p>
-              </div>
-              <div className="hidden md:block h-px flex-1 bg-slate-800/60" />
+            <div className="max-w-3xl">
+              <h2 className="text-2xl md:text-3xl font-bold text-teal-200">
+                Choose the right side of R43
+              </h2>
+              <p className="mt-2 text-sm md:text-base text-slate-400">
+                Some businesses need a professional website. Others need software that helps them operate.
+                R43 separates those needs clearly.
+              </p>
             </div>
 
-            <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {[
-                {
-                  title: "Websites & Hosting",
-                  bullets: ["Modern, responsive sites", "Domain, DNS, SSL, email", "Fast hosting & backups"],
-                },
-                {
-                  title: "Business Setup & Support",
-                  bullets: ["New business tech setup", "Accounts, devices, policies", "Ongoing help & documentation"],
-                },
-                {
-                  title: "Point-of-Sale (POS)",
-                  bullets: ["POS selection & rollout", "Hardware & receipt printers", "User access & training"],
-                },
-                {
-                  title: "Task Manager",
-                  bullets: ["Team tasks & status", "Light workflows", "Reports and history"],
-                },
-                {
-                  title: "LocalDocs (On-Prem Files)",
-                  bullets: ["Simple on-prem document access", "Structured folders & metadata", "Permissions and backups"],
-                },
-                {
-                  title: "Blazor Business Apps",
-                  bullets: ["Heavier tracking & LOB apps", "Role-based access & auditing", "Dashboards and reporting"],
-                },
-              ].map((card) => (
+            <div className="mt-8 grid gap-6 lg:grid-cols-2">
+              {divisions.map((division) => (
                 <article
-                  key={card.title}
-                  className="group rounded-lg border border-slate-800 bg-[#0f1416] p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] transition-transform duration-200 hover:-translate-y-[2px]"
+                  key={division.name}
+                  className="group rounded-2xl border border-slate-800 bg-[#0f1416] p-6 transition duration-200 hover:-translate-y-[2px] hover:border-teal-700/50"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="h-[10px] w-[10px] rounded-sm bg-gradient-to-br from-teal-400 to-cyan-500 shadow-[0_0_10px_rgba(45,212,191,0.35)]" />
-                    <h3 className="text-lg font-semibold text-teal-300">{card.title}</h3>
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <div className="text-sm uppercase tracking-wider text-slate-500">
+                        {division.label}
+                      </div>
+                      <h3 className="mt-2 text-2xl font-bold text-teal-200">
+                        {division.name}
+                      </h3>
+                    </div>
+
+                    <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-teal-400 to-cyan-500 shadow-[0_0_20px_rgba(45,212,191,0.25)]" />
                   </div>
-                  <ul className="mt-3 space-y-2 text-sm text-slate-300/90">
-                    {card.bullets.map((b) => (
-                      <li key={b} className="flex items-start gap-2">
-                        <span className="mt-1 h-1.5 w-1.5 rounded-full bg-teal-400" />
-                        {b}
+
+                  <p className="mt-4 text-slate-300/90 leading-relaxed">
+                    {division.description}
+                  </p>
+
+                  <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+                    {division.bullets.map((bullet) => (
+                      <li key={bullet} className="flex items-center gap-2 text-sm text-slate-300">
+                        <span className="h-1.5 w-1.5 rounded-full bg-teal-400" />
+                        {bullet}
                       </li>
                     ))}
                   </ul>
+
+                  <a
+                    href={division.href}
+                    className="mt-6 inline-flex items-center rounded-md border border-slate-700 bg-[#0b1013] px-4 py-2 text-sm font-medium text-slate-200 hover:border-teal-500/60 hover:text-teal-200 transition"
+                  >
+                    {division.cta}
+                  </a>
                 </article>
               ))}
             </div>
@@ -187,44 +194,93 @@ const Home: React.FC = () => {
           <div className="h-px w-full bg-slate-800/60" />
         </section>
 
-        {/* ===== Fit (two spec-panels) ===== */}
-        <section className="bg-[#0a0f12]">
+        {/* ===== Shared Strengths ===== */}
+        <section id="services" className="bg-[#0a0f12]">
           <div className="mx-auto max-w-7xl px-6 py-14 md:py-20">
             <div className="flex items-end justify-between gap-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-teal-200">Is R43 a Good Fit?</h2>
+              <div>
+                <h2 className="text-2xl md:text-3xl font-bold text-teal-200">
+                  Built with the same standard
+                </h2>
+                <p className="mt-1 text-sm text-slate-400">
+                  Whether it is a website or a custom system, the work is built to be clean, reliable, and supportable.
+                </p>
+              </div>
               <div className="hidden md:block h-px flex-1 bg-slate-800/60" />
             </div>
 
-            <div className="mt-6 grid gap-6 md:grid-cols-2">
-              <div className="rounded-xl border border-slate-800 bg-[#0f1416]/95 p-5">
-                <h3 className="text-base font-semibold text-slate-200">You’ll like working with me if you want:</h3>
-                <ul className="mt-3 space-y-2 text-sm text-slate-300/90">
+            <div className="mt-8 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+              {[
+                {
+                  title: "Professional setup",
+                  text: "Domains, DNS, SSL, hosting, email, forms, and deployment handled properly.",
+                },
+                {
+                  title: "Clear documentation",
+                  text: "Systems, access, vendors, and technical details documented for long-term support.",
+                },
+                {
+                  title: "Practical development",
+                  text: "Solutions are designed around real business use, not unnecessary complexity.",
+                },
+                {
+                  title: "Long-term support",
+                  text: "Hosting, updates, changes, troubleshooting, and improvements can continue after launch.",
+                },
+              ].map((card) => (
+                <article
+                  key={card.title}
+                  className="rounded-xl border border-slate-800 bg-[#0f1416] p-5"
+                >
+                  <div className="h-[10px] w-[10px] rounded-sm bg-gradient-to-br from-teal-400 to-cyan-500" />
+                  <h3 className="mt-4 text-lg font-semibold text-slate-200">{card.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-slate-400">{card.text}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+          <div className="h-px w-full bg-slate-800/60" />
+        </section>
+
+        {/* ===== Fit ===== */}
+        <section className="bg-[#0c1114]">
+          <div className="mx-auto max-w-7xl px-6 py-14 md:py-20">
+            <div className="grid gap-6 lg:grid-cols-2">
+              <div className="rounded-2xl border border-slate-800 bg-[#0f1416]/95 p-6">
+                <h2 className="text-2xl font-bold text-teal-200">
+                  R43 Creative is a fit when you need:
+                </h2>
+
+                <ul className="mt-5 space-y-3 text-sm text-slate-300/90">
                   {[
-                    "Straightforward setup and reliable hosting",
-                    "Clear documentation and predictable costs",
-                    "Practical tools (POS, tasks, docs) that people actually use",
-                    "Room to grow into custom Blazor apps when needed",
-                  ].map((v) => (
-                    <li key={v} className="flex items-start gap-2">
-                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-teal-400" />
-                      {v}
+                    "A professional website for your business",
+                    "Hosting, domain, DNS, SSL, and contact form setup",
+                    "A clean online presence that works well on mobile",
+                    "Ongoing website support without dealing with the technical details",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-teal-400" />
+                      {item}
                     </li>
                   ))}
                 </ul>
               </div>
 
-              <div className="rounded-xl border border-slate-800 bg-[#0f1416]/95 p-5">
-                <h3 className="text-base font-semibold text-slate-200">Common clients:</h3>
-                <ul className="mt-3 space-y-2 text-sm text-slate-300/90">
+              <div className="rounded-2xl border border-slate-800 bg-[#0f1416]/95 p-6">
+                <h2 className="text-2xl font-bold text-cyan-200">
+                  R43 Ops is a fit when you need:
+                </h2>
+
+                <ul className="mt-5 space-y-3 text-sm text-slate-300/90">
                   {[
-                    "Contractors & trades",
-                    "Shops & small retail",
-                    "Local government / community orgs",
-                    "Professional services & small teams",
-                  ].map((v) => (
-                    <li key={v} className="flex items-start gap-2">
-                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-teal-400" />
-                      {v}
+                    "Custom software instead of another spreadsheet",
+                    "Dashboards, reporting, or internal business tools",
+                    "Workflow tracking, task systems, or document access",
+                    "A web-based application built around your actual process",
+                  ].map((item) => (
+                    <li key={item} className="flex items-start gap-3">
+                      <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-cyan-400" />
+                      {item}
                     </li>
                   ))}
                 </ul>
@@ -234,23 +290,37 @@ const Home: React.FC = () => {
           <div className="h-px w-full bg-slate-800/60" />
         </section>
 
-        {/* ===== Process (machined steps) ===== */}
-        <section className="bg-[#0c1114]">
+        {/* ===== Process ===== */}
+        <section className="bg-[#0a0f12]">
           <div className="mx-auto max-w-7xl px-6 py-14 md:py-20">
             <div className="flex items-end justify-between gap-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-teal-200">How We Work</h2>
+              <h2 className="text-2xl md:text-3xl font-bold text-teal-200">
+                How We Work
+              </h2>
               <div className="hidden md:block h-px flex-1 bg-slate-800/60" />
             </div>
 
             <ol className="mt-8 grid gap-6 md:grid-cols-3">
               {[
-                { step: "1", title: "Assess", text: "Quick discovery—goals, systems, constraints. Clear scope and estimate." },
-                { step: "2", title: "Implement", text: "Deliver the plan, handle vendors, set up hosting, document everything." },
-                { step: "3", title: "Support", text: "Monitor, improve, and stay available. No surprises." },
+                {
+                  step: "1",
+                  title: "Assess",
+                  text: "Understand the business need, current setup, users, budget, and what success looks like.",
+                },
+                {
+                  step: "2",
+                  title: "Build",
+                  text: "Design and implement the website, system, workflow, or tool with a clear scope.",
+                },
+                {
+                  step: "3",
+                  title: "Support",
+                  text: "Provide ongoing hosting, updates, troubleshooting, documentation, and improvements.",
+                },
               ].map((s) => (
                 <li
                   key={s.step}
-                  className="rounded-lg border border-slate-800 bg-[#0f1416] p-5 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]"
+                  className="rounded-xl border border-slate-800 bg-[#0f1416] p-5"
                 >
                   <div className="text-teal-400 text-sm font-semibold">Step {s.step}</div>
                   <div className="mt-1 text-lg font-semibold text-slate-200">{s.title}</div>
@@ -262,10 +332,14 @@ const Home: React.FC = () => {
           <div className="h-px w-full bg-slate-800/60" />
         </section>
 
-        {/* ===== FAQs (your component) ===== */}
-        <Faqs items={faqs} id="faqs" />
+        <Faqs
+          items={faqs}
+          id="faqs"
+          accent="teal"
+          title="Frequently Asked Questions"
+          subtitle="Questions about R43 Digital Tech, R43 Creative, and R43 Ops."
+        />
 
-        {/* ===== Contact CTA ===== */}
         <section id="contact" className="bg-[#0c1114]">
           <CTA />
         </section>

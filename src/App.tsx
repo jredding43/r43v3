@@ -5,7 +5,8 @@ import Header from "./components/Header";
 import SubHeader from "./components/Subheader";
 import Footer from "./components/Footer";
 import logo from "./assets/newlogo.png";
-import Services from "./pages/Services";
+import Creative from "./pages/creative";
+import Ops from "./pages/ops";
 import Contact from "./pages/Contact";
 import Projects from "./pages/Projects";
 import About from "./pages/About";
@@ -29,7 +30,8 @@ const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="about" element={<About />} />
-              <Route path="services" element={<Services />} />
+              <Route path="creative" element={<Creative />} />
+              <Route path="ops" element={<Ops />} />
               <Route path="contact" element={<Contact />} />
               <Route path="projects" element={<Projects />} />
             </Routes>

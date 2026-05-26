@@ -1,298 +1,265 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import CTA from "../components/CTA";
 
-const sections = {
-  overview: {
-    title: "How Projects Work",
-    body:
-      "Every project is scoped clearly, documented thoroughly, and delivered with predictable steps. You’ll always know what we’re building, what it costs, and what comes next.",
-    bullets: [
-      "Straightforward scope and estimates",
-      "Clear communication and change control",
-      "Documentation at every stage",
-    ],
-  },
-  engagement: [
+const Projects: React.FC = () => {
+  const projectTypes = [
     {
-      title: "Engagement Models",
+      title: "R43 Creative Projects",
+      label: "Websites & Digital Presence",
       text:
-        "Choose the right shape for your work. Smaller website or setup jobs fit fixed-scope. Larger software or Blazor builds often run phased to reduce risk and validate early.",
-      list: [
-        "Fixed-scope (website, POS rollout, LocalDocs setup)",
-        "Phased delivery (modules / milestones for Blazor or larger builds)",
-        "Advisory retainers (monthly support, roadmap, improvements)",
+        "Website projects are focused on clean presentation, reliable hosting setup, contact forms, mobile-friendly layouts, and ongoing support.",
+      link: "/creative",
+      linkText: "View Creative",
+      bullets: [
+        "Business websites",
+        "Hosting and launch setup",
+        "Contact forms",
+        "Website maintenance",
       ],
     },
     {
-      title: "Typical Timeline",
+      title: "R43 Ops Projects",
+      label: "Software & Operational Systems",
       text:
-        "Time varies with scope, but we aim for short, well-defined cycles with visible progress and demos.",
+        "Ops projects are focused on dashboards, workflows, internal tools, reporting, data organization, and custom systems built around business processes.",
+      link: "/ops",
+      linkText: "View Ops",
+      bullets: [
+        "Dashboards",
+        "Workflow systems",
+        "Internal tools",
+        "Operational tracking",
+      ],
+    },
+  ];
+
+  const delivery = [
+    {
+      title: "Discovery",
+      text:
+        "We define the business need, current setup, users, constraints, goals, and what a successful project should deliver.",
       list: [
-        "Discovery & estimate: 2–5 days",
-        "Implementation window: 1–6 weeks (phased for bigger work)",
-        "Handoff & support: same week as delivery",
+        "Business goals and pain points",
+        "Current tools, systems, and process review",
+        "Initial scope and project direction",
       ],
     },
     {
-      title: "Communication",
+      title: "Scope",
       text:
-        "One owner, one channel. We use concise weekly updates and a shared checklist so nothing is missed.",
+        "The work is shaped into a clear scope so expectations, deliverables, and responsibilities are understood before the build starts.",
       list: [
-        "Single point of contact",
-        "Weekly status (done / next / risks)",
-        "Shared task list & change log",
+        "Defined deliverables",
+        "Acceptance criteria",
+        "Dependencies and client-provided content",
       ],
     },
     {
-      title: "Deliverables",
+      title: "Build",
       text:
-        "You receive the finished work plus the operational pieces to keep it running—credentials, diagrams, and a brief runbook.",
+        "The project is implemented in practical stages with visible progress, feedback points, and controlled changes.",
       list: [
-        "Working site/app or configured system",
-        "Credentials & account ownership documented",
-        "Runbook/README and basic training",
-      ],
-    },
-  ],
-  controls: [
-    {
-      title: "Scope & Changes",
-      text:
-        "Requests are captured, sized, and either swapped into scope or scheduled for a follow-up phase. No surprise invoices.",
-      list: [
-        "Written scope with acceptance criteria",
-        "Change requests sized in hours or a small work package",
-        "Sign-off before changes start",
+        "Website, system, or workflow buildout",
+        "Testing and review checkpoints",
+        "Adjustments based on approved scope",
       ],
     },
     {
-      title: "Quality & Testing",
+      title: "Launch & Support",
       text:
-        "We test functionally and, for software, add basic unit or integration checks as appropriate. You validate against acceptance criteria.",
+        "After launch, the project is handed off with support options, documentation, and a clear path for future improvements.",
       list: [
-        "Functional tests for key paths",
-        "UAT checklist (you verify fit)",
-        "Fix-forward window included",
+        "Launch checklist",
+        "Documentation and ownership details",
+        "Support or maintenance options",
       ],
     },
+  ];
+
+  const standards = [
     {
-      title: "Security & Access",
+      title: "Clear Communication",
       text:
-        "Least-privilege by default. Credentials are transferred at handoff and stored in your chosen password manager.",
+        "Projects are managed with straightforward updates, practical expectations, and no unnecessary complexity.",
       list: [
-        "Least privilege roles and scoped keys",
-        "HTTPS/SSL, patches, backups on by default",
-        "Credential transfer & revocation checklist",
+        "Simple project status updates",
+        "Known blockers identified early",
+        "Changes discussed before work continues",
       ],
     },
     {
       title: "Documentation",
       text:
-        "We leave things understandable. You’ll get enough detail to operate and extend without hunting for answers.",
+        "Important technical details are documented so the project remains understandable and supportable after launch.",
       list: [
-        "Architecture/diagram (where relevant)",
-        "Accounts & DNS/hosting details",
-        "Runbook: backup/restore, updates, contacts",
-      ],
-    },
-  ],
-  commercial: [
-    {
-      title: "Pricing",
-      text:
-        "Transparent estimates before work begins. Fixed price for clearly bounded scopes; time & materials for research-heavy items.",
-      list: [
-        "Upfront estimate or fixed bid for websites/rollouts",
-        "Phased budgets for Blazor/line-of-business apps",
-        "No auto-renewing surprises",
+        "Hosting and domain details",
+        "Access and ownership notes",
+        "Runbook or README where needed",
       ],
     },
     {
-      title: "Invoicing",
+      title: "Security & Access",
       text:
-        "Milestone-based or 50/50 for small projects. Managed services/hosting billed monthly.",
+        "Access is handled carefully, with ownership transferred appropriately and unnecessary access avoided.",
       list: [
-        "Deposit for small fixed scopes",
-        "Milestone billing for multi-phase builds",
-        "Net-15 terms standard",
+        "SSL/HTTPS where applicable",
+        "Least-needed access approach",
+        "Credential handoff checklist",
       ],
     },
     {
-      title: "Support",
+      title: "Supportability",
       text:
-        "Post-launch, you can engage ad-hoc or via a small monthly plan for updates, monitoring, and incremental improvements.",
+        "The goal is not just to build something, but to build something that can be maintained and improved over time.",
       list: [
-        "Care plans for sites/hosting",
-        "Ad-hoc tickets for changes",
-        "Response targets agreed up front",
+        "Clean structure",
+        "Reusable patterns",
+        "Future improvement path",
       ],
     },
-  ],
-};
+  ];
 
-const Projects: React.FC = () => {
   return (
     <>
       <Helmet>
         <title>Projects — How We Work | R43 Digital Tech</title>
         <meta
           name="description"
-          content="R43 Digital Tech project approach: clear scope, phased delivery, documented handoff, and predictable support for websites, hosting, POS, LocalDocs, and Blazor apps."
+          content="R43 Digital Tech project approach for websites, business systems, dashboards, workflow tools, and operational software through R43 Creative and R43 Ops."
         />
       </Helmet>
 
       <main className="font-['Roboto'] text-slate-200">
-        {/* Header band */}
-        <section className="bg-[#0a0f12] border-b border-slate-800/60">
-          <div className="mx-auto max-w-7xl px-6 py-12 md:py-16">
-            <div className="flex items-end justify-between gap-4">
-              <div>
-                <h1 className="text-3xl md:text-4xl font-bold tracking-[0.03em] text-teal-200">
-                  Projects: How We Work
-                </h1>
-                <p className="mt-2 max-w-2xl text-slate-300/90">
-                  Industrial-grade delivery with clear scope, phased execution for bigger efforts,
-                  and documentation so your team can operate confidently.
-                </p>
+        <section className="relative overflow-hidden border-b border-slate-800/70 bg-[#080d10]">
+          <div className="absolute inset-0 opacity-[0.08]">
+            <div className="absolute left-0 top-0 h-96 w-96 rounded-full bg-teal-400 blur-3xl" />
+            <div className="absolute bottom-0 right-0 h-96 w-96 rounded-full bg-cyan-400 blur-3xl" />
+          </div>
+
+          <div className="relative mx-auto max-w-7xl px-6 py-16 md:py-24">
+            <div className="max-w-4xl">
+              <div className="inline-flex items-center rounded-full border border-teal-700/30 bg-[#0f171a] px-3 py-1 text-[11px] uppercase tracking-[0.18em] text-teal-300/90">
+                R43 Digital Tech Projects
               </div>
-              <div className="hidden md:block h-px flex-1 bg-slate-800/60" />
+
+              <h1 className="mt-5 text-4xl font-bold tracking-tight text-teal-100 md:text-6xl">
+                Clear project delivery for websites, software, and business systems.
+              </h1>
+
+              <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-300/90 md:text-lg">
+                Projects are scoped clearly, built in practical stages, documented for long-term support,
+                and routed through the right side of R43: Creative for websites, Ops for custom systems.
+              </p>
+
+              <div className="mt-8 flex flex-wrap items-center gap-3">
+                <a
+                  href="#project-types"
+                  className="inline-flex items-center rounded-md bg-teal-600/90 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-teal-500"
+                >
+                  View project types
+                </a>
+                <a
+                  href="#contact"
+                  className="inline-flex items-center rounded-md border border-slate-700 bg-[#0f1418] px-5 py-2.5 text-sm font-semibold text-slate-200 transition hover:border-teal-600/60 hover:text-teal-100"
+                >
+                  Start a project
+                </a>
+              </div>
             </div>
           </div>
+
           <div className="h-[2px] w-full bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-400" />
         </section>
 
-        {/* Overview */}
-        <section className="bg-[#0c1114]">
-          <div className="mx-auto max-w-7xl px-6 py-12 md:py-16">
-            <div className="grid gap-6 md:grid-cols-[1.2fr_1fr]">
-              <div className="rounded-xl border border-slate-800 bg-[#0f1416]/95 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
-                <h2 className="text-xl md:text-2xl font-bold text-teal-200">{sections.overview.title}</h2>
-                <p className="mt-3 text-slate-300/90">{sections.overview.body}</p>
-                <ul className="mt-5 grid gap-2 text-sm text-slate-300/90">
-                  {sections.overview.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-2">
-                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-teal-400" />
-                      {b}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="rounded-xl border border-slate-800 bg-[#0f1416]/95 p-6">
-                <h3 className="text-sm font-semibold tracking-wide text-slate-300 uppercase">Typical Fit</h3>
-                <ul className="mt-3 space-y-2 text-sm text-slate-300/90">
-                  {[
-                    "Websites & reliable hosting",
-                    "POS rollout or refresh",
-                    "Task Manager or LocalDocs setup",
-                    "Blazor app for heavier tracking",
-                  ].map((v) => (
-                    <li key={v} className="flex items-start gap-2">
-                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-teal-400" />
-                      {v}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-5 h-px w-full bg-slate-800/60" />
-                <div className="mt-4 text-xs text-slate-400">
-                  Clear acceptance criteria and documented ownership at handoff.
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="h-px w-full bg-slate-800/60" />
-        </section>
-
-        {/* Engagement & Delivery */}
-        <section className="bg-[#0a0f12]">
-          <div className="mx-auto max-w-7xl px-6 py-12 md:py-16">
-            <div className="flex items-end justify-between gap-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-teal-200">Engagement & Delivery</h2>
-              <div className="hidden md:block h-px flex-1 bg-slate-800/60" />
+        <section id="project-types" className="bg-[#0c1114]">
+          <div className="mx-auto max-w-7xl px-6 py-14 md:py-20">
+            <div className="max-w-3xl">
+              <h2 className="text-2xl font-bold text-teal-200 md:text-3xl">
+                Project types
+              </h2>
+              <p className="mt-2 text-sm leading-relaxed text-slate-400 md:text-base">
+                R43 Digital Tech separates projects by need so customers are routed to the right service path.
+              </p>
             </div>
 
-            <div className="mt-6 grid gap-6 md:grid-cols-2">
-              {sections.engagement.map((card) => (
+            <div className="mt-8 grid gap-6 lg:grid-cols-2">
+              {projectTypes.map((project) => (
                 <article
-                  key={card.title}
-                  className="rounded-xl border border-slate-800 bg-[#0f1416]/95 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]"
+                  key={project.title}
+                  className="rounded-2xl border border-slate-800 bg-[#0f1416] p-6"
                 >
-                  <div className="flex items-center gap-3">
-                    <div className="h-[10px] w-[10px] rounded-sm bg-gradient-to-br from-teal-400 to-cyan-500" />
-                    <h3 className="text-lg font-semibold text-teal-300">{card.title}</h3>
+                  <div className="text-sm uppercase tracking-[0.16em] text-slate-500">
+                    {project.label}
                   </div>
-                  <p className="mt-2 text-sm text-slate-300/90">{card.text}</p>
-                  <ul className="mt-3 space-y-2 text-sm text-slate-300/90">
-                    {card.list.map((li) => (
-                      <li key={li} className="flex items-start gap-2">
-                        <span className="mt-1 h-1.5 w-1.5 rounded-full bg-teal-400" />
-                        {li}
+
+                  <h3 className="mt-2 text-2xl font-bold text-teal-200">
+                    {project.title}
+                  </h3>
+
+                  <p className="mt-4 text-sm leading-relaxed text-slate-400">
+                    {project.text}
+                  </p>
+
+                  <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+                    {project.bullets.map((bullet) => (
+                      <li key={bullet} className="flex items-start gap-3 text-sm text-slate-300/90">
+                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-teal-400" />
+                        {bullet}
                       </li>
                     ))}
                   </ul>
+
+                  <Link
+                    to={project.link}
+                    className="mt-6 inline-flex rounded-md border border-slate-700 bg-[#0b1013] px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-teal-500/60 hover:text-teal-200"
+                  >
+                    {project.linkText}
+                  </Link>
                 </article>
               ))}
             </div>
           </div>
-          <div className="h-px w-full bg-slate-800/60" />
+
+          <div className="h-px w-full bg-slate-800/70" />
         </section>
 
-        {/* Controls & Documentation */}
-        <section className="bg-[#0c1114]">
-          <div className="mx-auto max-w-7xl px-6 py-12 md:py-16">
-            <div className="flex items-end justify-between gap-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-teal-200">Controls & Documentation</h2>
-              <div className="hidden md:block h-px flex-1 bg-slate-800/60" />
-            </div>
-
-            <div className="mt-6 grid gap-6 md:grid-cols-2">
-              {sections.controls.map((card) => (
-                <article
-                  key={card.title}
-                  className="rounded-xl border border-slate-800 bg-[#0f1416]/95 p-6 shadow-[0_0_0_1px_rgba(255,255,255,0.02)]"
-                >
-                  <div className="flex items-center gap-3">
-                    <div className="h-[10px] w-[10px] rounded-sm bg-gradient-to-br from-teal-400 to-cyan-500" />
-                    <h3 className="text-lg font-semibold text-teal-300">{card.title}</h3>
-                  </div>
-                  <p className="mt-2 text-sm text-slate-300/90">{card.text}</p>
-                  <ul className="mt-3 space-y-2 text-sm text-slate-300/90">
-                    {card.list.map((li) => (
-                      <li key={li} className="flex items-start gap-2">
-                        <span className="mt-1 h-1.5 w-1.5 rounded-full bg-teal-400" />
-                        {li}
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              ))}
-            </div>
-          </div>
-          <div className="h-px w-full bg-slate-800/60" />
-        </section>
-
-        {/* Commercials */}
         <section className="bg-[#0a0f12]">
-          <div className="mx-auto max-w-7xl px-6 py-12 md:py-16">
+          <div className="mx-auto max-w-7xl px-6 py-14 md:py-20">
             <div className="flex items-end justify-between gap-4">
-              <h2 className="text-2xl md:text-3xl font-bold text-teal-200">Pricing, Invoicing & Support</h2>
-              <div className="hidden md:block h-px flex-1 bg-slate-800/60" />
+              <div>
+                <h2 className="text-2xl font-bold text-teal-200 md:text-3xl">
+                  Delivery process
+                </h2>
+                <p className="mt-1 text-sm text-slate-400">
+                  Each project follows a structured path from discovery to launch and support.
+                </p>
+              </div>
+              <div className="hidden h-px flex-1 bg-slate-800/70 md:block" />
             </div>
 
-            <div className="mt-6 grid gap-6 md:grid-cols-3">
-              {sections.commercial.map((card) => (
+            <div className="mt-8 grid gap-6 md:grid-cols-2">
+              {delivery.map((card) => (
                 <article
                   key={card.title}
-                  className="rounded-xl border border-slate-800 bg-[#0f1416]/95 p-6 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]"
+                  className="rounded-2xl border border-slate-800 bg-[#0f1416] p-6"
                 >
-                  <h3 className="text-lg font-semibold text-teal-300">{card.title}</h3>
-                  <p className="mt-2 text-sm text-slate-300/90">{card.text}</p>
-                  <ul className="mt-3 space-y-2 text-sm text-slate-300/90">
-                    {card.list.map((li) => (
-                      <li key={li} className="flex items-start gap-2">
-                        <span className="mt-1 h-1.5 w-1.5 rounded-full bg-teal-400" />
-                        {li}
+                  <div className="h-[10px] w-[10px] rounded-sm bg-gradient-to-br from-teal-400 to-cyan-500" />
+
+                  <h3 className="mt-4 text-xl font-semibold text-teal-200">
+                    {card.title}
+                  </h3>
+
+                  <p className="mt-2 text-sm leading-relaxed text-slate-400">
+                    {card.text}
+                  </p>
+
+                  <ul className="mt-5 space-y-2 text-sm text-slate-300/90">
+                    {card.list.map((item) => (
+                      <li key={item} className="flex items-start gap-3">
+                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-teal-400" />
+                        {item}
                       </li>
                     ))}
                   </ul>
@@ -300,12 +267,74 @@ const Projects: React.FC = () => {
               ))}
             </div>
           </div>
-          <div className="h-px w-full bg-slate-800/60" />
+
+          <div className="h-px w-full bg-slate-800/70" />
         </section>
 
-        {/* CTA */}
+        <section className="bg-[#0c1114]">
+          <div className="mx-auto max-w-7xl px-6 py-14 md:py-20">
+            <div className="flex items-end justify-between gap-4">
+              <div>
+                <h2 className="text-2xl font-bold text-teal-200 md:text-3xl">
+                  Project standards
+                </h2>
+                <p className="mt-1 text-sm text-slate-400">
+                  The same delivery standards apply across Creative and Ops projects.
+                </p>
+              </div>
+              <div className="hidden h-px flex-1 bg-slate-800/70 md:block" />
+            </div>
+
+            <div className="mt-8 grid gap-6 md:grid-cols-2">
+              {standards.map((card) => (
+                <article
+                  key={card.title}
+                  className="rounded-2xl border border-slate-800 bg-[#0f1416] p-6"
+                >
+                  <h3 className="text-xl font-semibold text-teal-200">
+                    {card.title}
+                  </h3>
+
+                  <p className="mt-2 text-sm leading-relaxed text-slate-400">
+                    {card.text}
+                  </p>
+
+                  <ul className="mt-5 space-y-2 text-sm text-slate-300/90">
+                    {card.list.map((item) => (
+                      <li key={item} className="flex items-start gap-3">
+                        <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-teal-400" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
+
+          <div className="h-px w-full bg-slate-800/70" />
+        </section>
+
+        <section className="bg-[#0a0f12]">
+          <div className="mx-auto max-w-7xl px-6 py-14 md:py-20">
+            <div className="rounded-2xl border border-slate-800 bg-[#0f1416] p-6 md:p-8">
+              <h2 className="text-2xl font-bold text-teal-200 md:text-3xl">
+                Quotes are scoped after project review
+              </h2>
+
+              <p className="mt-3 max-w-3xl text-sm leading-relaxed text-slate-400 md:text-base">
+                Website and software projects vary based on goals, content, features, integrations,
+                users, hosting needs, timeline, and support requirements. After a short discovery
+                conversation, R43 provides a clear project scope and quote before work begins.
+              </p>
+            </div>
+          </div>
+
+          <div className="h-px w-full bg-slate-800/70" />
+        </section>
+
         <section id="contact" className="bg-[#0c1114]">
-         <CTA />
+          <CTA />
         </section>
       </main>
     </>

@@ -1,11 +1,16 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
-type NavItem = { label: string; href: string };
+type NavItem = {
+  label: string;
+  href: string;
+  eyebrow?: string;
+};
 
 const NAV: NavItem[] = [
   { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
+  { label: "Creative", href: "/creative", eyebrow: "Web" },
+  { label: "Ops", href: "/ops", eyebrow: "Software" },
   { label: "Projects", href: "/projects" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
@@ -17,61 +22,58 @@ type SubHeaderProps = {
 
 const SubHeader: React.FC<SubHeaderProps> = ({ items = NAV }) => {
   const location = useLocation();
-
-  // Normalized path (no trailing slash unless it's root)
   const path = location.pathname.replace(/\/+$/, "") || "/";
 
   const isActive = (href: string) => {
     const target = href.replace(/\/+$/, "") || "/";
-    if (target === "/") return path === "/"; // Home should only match exact "/"
-    return path === target || path.startsWith(target + "/"); // match subroutes
+    if (target === "/") return path === "/";
+    return path === target || path.startsWith(target + "/");
   };
 
   return (
     <nav
-      className="w-full font-['Roboto'] border-t border-slate-800/70 border-b 
-                 bg-gradient-to-b from-[#0f1416] to-[#0a0f12] text-slate-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.05)]"
+      className="w-full font-['Roboto'] border-y border-slate-800/70 bg-[#0a0f12]/95 text-slate-200 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
       aria-label="Primary navigation"
     >
       <div className="mx-auto max-w-7xl px-6">
-        <ul className="flex flex-wrap items-center justify-center gap-6 md:gap-10 py-3 md:py-4">
+        <ul className="flex flex-wrap items-center justify-center gap-2 py-3 md:gap-3">
           {items.map((item) => {
             const active = isActive(item.href);
+
             return (
-              <li key={item.label} className="relative group">
+              <li key={item.href}>
                 <Link
                   to={item.href}
-                  className={[
-                    "relative block px-4 py-2 text-sm md:text-base font-medium uppercase tracking-wide rounded-md transition-all duration-300",
-                    active
-                      ? "bg-[#162427] text-teal-300 shadow-[inset_0_1px_4px_rgba(0,255,255,0.3)]"
-                      : "text-slate-300 hover:text-teal-200",
-                  ].join(" ")}
                   aria-current={active ? "page" : undefined}
+                  className={[
+                    "group relative flex min-w-[92px] flex-col items-center justify-center rounded-lg border px-4 py-2 text-center transition-all duration-200",
+                    active
+                      ? "border-teal-500/40 bg-[#102123] text-teal-200 shadow-[0_0_18px_rgba(45,212,191,0.12)]"
+                      : "border-transparent text-slate-400 hover:border-slate-700 hover:bg-[#0f1416] hover:text-slate-200",
+                  ].join(" ")}
                 >
-                  {/* Hover “plate” */}
+                  {item.eyebrow && (
+                    <span
+                      className={[
+                        "text-[10px] font-medium uppercase tracking-[0.18em]",
+                        active ? "text-teal-300/90" : "text-slate-500 group-hover:text-teal-400/80",
+                      ].join(" ")}
+                    >
+                      {item.eyebrow}
+                    </span>
+                  )}
+
+                  <span className="text-sm font-semibold uppercase tracking-wide">
+                    {item.label}
+                  </span>
+
                   <span
                     aria-hidden
                     className={[
-                      "absolute inset-0 bg-gradient-to-r from-[#102123] via-[#143537] to-[#102123]",
-                      "opacity-0 translate-y-3 scale-95 rounded-md blur-[0.5px]",
-                      "group-hover:opacity-100 group-hover:translate-y-0 group-hover:scale-100",
-                      "transition-all duration-300 ease-out",
-                      active ? "opacity-100 translate-y-0 scale-100" : "",
-                    ].join(" ")}
-                  />
-
-                  {/* Text */}
-                  <span className="relative z-10">{item.label}</span>
-
-                  {/* Top accent */}
-                  <span
-                    aria-hidden
-                    className={[
-                      "absolute top-0 left-0 h-[2px] w-full rounded-t-md transition-all duration-300 ease-out",
+                      "absolute bottom-0 left-3 right-3 h-[2px] rounded-full transition-all duration-200",
                       active
-                        ? "bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-500"
-                        : "group-hover:bg-gradient-to-r group-hover:from-teal-400 group-hover:via-cyan-400 group-hover:to-teal-500",
+                        ? "bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-400 opacity-100"
+                        : "bg-gradient-to-r from-teal-400 via-cyan-400 to-teal-400 opacity-0 group-hover:opacity-70",
                     ].join(" ")}
                   />
                 </Link>
